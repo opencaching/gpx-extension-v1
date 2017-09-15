@@ -1,30 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsd:schema
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns="https://opencaching.pl/okapi/static/ocgpx/1"
-    targetNamespace="https://opencaching.pl/okapi/static/ocgpx/1"
-    elementFormDefault="qualified">
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:gpx="http://www.topografix.com/GPX/1/0"
+    xmlns:groundspeak="http://www.groundspeak.com/cache/1/0/1"
+    elementFormDefault="qualified"
 
-    <xsd:annotation>
-        <xsd:documentation>
-            Common Opencaching extensions to the Topografix GPX schema.
-        </xsd:documentation>
-    </xsd:annotation>
+    targetNamespace="https://github.com/opencaching/gpx-extension/tree/stable-v1"
+    xmlns="https://github.com/opencaching/gpx-extension/tree/stable-v1"
+>
+    <xs:annotation>
+        <xs:documentation>
+            This schema describes Opencaching Network extensions to the:
 
-    <xsd:element name="cache" type="cache_type" />
+            1. Topografix GPX file XML schema, identified by "http://www.topografix.com/GPX/1/0"
+               XML namespace. We will refer to elements in this namespace using the "gpx:"
+               prefix.
 
-    <xsd:complexType name="cache_type">
-        <xsd:sequence>
-            <xsd:element name="logpw" type="xsd:boolean" minOccurs="1" maxOccurs="1" />
-        </xsd:sequence>
-    </xsd:complexType>
+            2. Groundspeak's geocaching GPX extensions, identified by
+               "http://www.groundspeak.com/cache/1/0/1" XML namespace. We will refer to
+               elements in this namespace using the "groundspeak:" prefix.
 
-    <xsd:element name="log" type="log_type" />
+            Note, that "Opencaching Network" refers to the sites such as Opencaching.PL and
+            Opencaching.DE, NOT the (discontinued) Garmin's Opencaching.COM site.
+        </xs:documentation>
+    </xs:annotation>
 
-    <xsd:complexType name="log_type">
-        <xsd:sequence>
-            <xsd:element name="uuid" type="xsd:string" minOccurs="1" maxOccurs="1" />
-        </xsd:sequence>
-    </xsd:complexType>
+    <xs:element name="cache">
+        <xs:annotation>
+            <xs:documentation>
+                This element is supposed to be added as a child of the gpx:wpt element, if the
+                wpt element describes an Opencaching geocache.
 
-</xsd:schema>
+                Note, that Opencaching uses this element to convey information which cannot be
+                conveyed in other means (i.e. with the existing elements in the gpx and
+                groundspeak namespaces).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:element name="requiresPassword" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        If true, then password is required in order to submit this geocache.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    TODO
+    <xs:element name="log" type="log_type" />
+
+    <xs:complexType name="log_type">
+        <xs:sequence>
+            <xs:element name="uuid" type="xs:string" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    -->
+
+</xs:schema>
