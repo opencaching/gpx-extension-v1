@@ -37,18 +37,20 @@
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:element name="requiresPassword" type="xs:boolean" minOccurs="0" maxOccurs="1">
-                <xs:annotation>
-                    <xs:documentation>
-                        If true, then a password is required in order to submit 'Found it'
-                        or 'Attended' logs for this geocache.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
+            <xs:sequence>
+                <xs:element name="requiresPassword" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            If true, then a password is required in order to submit 'Found it'
+                            or 'Attended' logs for this geocache.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="log_uuid" type="xs:string" minOccurs="0" maxOccurs="1">
+    <xs:element name="log_uuid" type="xs:string">
         <xs:annotation>
             <xs:documentation>
                 This element is supposed to be added as a child of the groundspeak:log element.
