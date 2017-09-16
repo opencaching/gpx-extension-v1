@@ -38,7 +38,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="requiresPassword" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:element name="requires_password" type="xs:boolean" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             If true, then a password is required in order to submit 'Found it'
