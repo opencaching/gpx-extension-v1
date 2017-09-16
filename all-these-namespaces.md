@@ -59,11 +59,7 @@ use of it, and it was a hit.
    Topografix 1.1 format.
 
  * [GSAK](http://gsak.net) allows to export GPX files in both 1.0 and 1.1
-   formats.
-
-   - Can someone verify that? It just seems so from the screenshot
-     [here](http://gsak.net/help/hs6500.htm), but I'm not certain if "Ver 1.0"
-     there refers to the Topografix XML namespace, or the Groundspeak one?
+   formats. 
 
 
 Groundspeak extensions
