@@ -48,7 +48,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="log_uuid" type="xs:string" minOccurs="1" maxOccurs="1">
+    <xs:element name="log_uuid" type="xs:string" minOccurs="0" maxOccurs="1">
         <xs:annotation>
             <xs:documentation>
                 This element is supposed to be added as a child of the groundspeak:log element.
