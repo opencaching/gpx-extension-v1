@@ -208,8 +208,8 @@ not document the meaning of them, but the `<visited>` element looks quite
 promising. Might be useful to support this information in other contexts.
 
 
-Summary
--------
+Conclusion
+----------
 
 When generating GPX files:
 
