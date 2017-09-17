@@ -101,9 +101,8 @@ about geocaches inside the *Topografix 1.0* GPX file.
 ### Backward-compatibility issues
 
 Same as with Topografix, not sure why Groundspeak decided to release the new
-version of its schema in the new XML namespace, especially in case of the
-*Groundspeak 1.0.1* format (which seems to be 100% backward-compatible with
-*Groundspeak 1.0*). Discuss [here][weird-namespaces].
+version of its schema in the new XML namespace. Discuss
+[here][weird-namespaces].
 
 
 ### Usage
