@@ -59,7 +59,10 @@ use of it, and it was a hit.
    Topografix 1.1 format.
 
  * [GSAK](http://gsak.net) allows to export GPX files in both 1.0 and 1.1
-   formats. 
+   formats.
+
+ * [TerraCaching](http://terracaching.com/) is using Topografix 1.1 format
+   ([source](https://github.com/opencaching/gpx-extension/issues/2)).
 
 
 Groundspeak extensions
