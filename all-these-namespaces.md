@@ -77,8 +77,24 @@ about geocaches inside the *Topografix 1.0* GPX file.
  * **Groundspeak 1.0.1**, identified by `http://www.groundspeak.com/cache/1/0/1`
    XML namespace, see XSD [here][groundspeak-1.0.1-xsd].
 
+   List of changes ([source](https://github.com/opencaching/gpx-extension/issues/1)):
+
+   - Added the `inc` attribute to the `<attribute>` element.
+
  * **Groundspeak 1.1**, identified by `http://www.groundspeak.com/cache/1/1`
    XML namespace, see XSD [here][groundspeak-1.1-xsd].
+
+   List of changes ([source](https://github.com/opencaching/gpx-extension/issues/1)):
+
+   - `guid` attributes were added to the elements that represent caches, logs,
+     users and travelbugs.
+   - `lastUpdated` and `exported` dates were added to the `<cache>` element.
+   - Changed types of lots of elements from *xs:string* to either *xs:long*,
+     *xs:decimal*, *xs:double* or *xs:date*.
+   - Introduced a new enumeration type *logType* for the type log elements
+     (instead of type *xs:string*).
+   - Bugfix: changed *maxOccurs* of the `<attributes>`, `<logs>` and
+     `<travelbugs>` elements from `unbounded` to `1`.
 
 
 ### Backward-compatibility issues
