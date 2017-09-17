@@ -159,7 +159,14 @@ the geocaching community.
 Same issues as with Topografix and Groundspeak. Their changes seem to be
 backward-compatible (can someone confirm this?), but still, they choose to
 switch XML namespace on every release, which seems to be effectively ruining
-this backward-compatibility. Discuss [here][weird-namespaces].
+this backward-compatibility.
+
+Currently, GSAK seems to be generating the most problems of all schema
+providers, because Topografix and Groundspeak seem to have learned something
+from their mistakes (they stopped releasing new namespaces, or at least it
+seems that they have).
+
+Discuss [here][weird-namespaces].
 
 
 ### Usage
