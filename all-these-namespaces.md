@@ -262,6 +262,11 @@ When parsing GPX files:
    backward-incompatible way, on a regular basis (probably they believe it's
    backward-compatible, but it isn't, not really).
 
+   You might also try supporting all namespaces with a common
+   `http://www.gsak.net/xmlv1/` prefix, and hope that GSAK will keep all of
+   them backward compatible. But this hope might be ungrounded, it's impossible
+   to guess what versioning-strategy GSAK authors use.
+
 
 [topografix-1.0-xsd]: http://www.topografix.com/GPX/1/0/gpx.xsd
 [topografix-1.1-xsd]: http://www.topografix.com/GPX/1/1/gpx.xsd
