@@ -35,9 +35,9 @@ This namespace defines the root of the GPX file.
 ### Backward-compatibility issues
 
 I don't know why Topografix decided to release the new version of its schema
-in the new XML namespace. Effectivelly, it has created an entirely new file
-format instead of extending the existing one. It just seems extremelly weird
-to me.
+in the new XML namespace. Effectively, it has created an entirely new file
+format instead of extending the existing one. Does anyone know why they have
+decided to use this strategy? Discuss [here][weird-namespaces].
 
 Perhaps this weirdness led big companies, such us Google, to resign from their
 support of the GPX format in their applications?
@@ -57,10 +57,8 @@ use of it, and it was a hit.
 
  * [GPS Visualizer](http://www.gpsvisualizer.com) exports GPX files in the
    Topografix 1.1 format.
-
  * [GSAK](http://gsak.net) allows to export GPX files in both 1.0 and 1.1
    formats.
-
  * [TerraCaching](http://terracaching.com/) is using Topografix 1.1 format
    ([source](https://github.com/opencaching/gpx-extension/issues/2)).
 
@@ -110,7 +108,8 @@ which might help with understanding this:
 
  * If only new elements were added, why didn't Groundspeak simply add them as
    optional elements to the existing XML namespace? This wouldn't break any
-   application, while changing the XML namespace would.
+   application, while changing the XML namespace would. Discuss
+   [here][weird-namespaces].
 
 
 ### Usage
@@ -133,6 +132,88 @@ As far as we know:
    again, can someone confirm this?
 
 
+GSAK Extensions
+---------------
+
+[GSAK](http://www.gsak.net/) is a desktop Geocaching application. They have
+defined some extensions of their own, some of which got adopted by the rest of
+the geocaching community.
+
+
+### Versions
+
+ * **GSAK 1.1**, identified by `http://www.gsak.net/xmlv1/1` XML namespace, see
+   XSD [here][gsak-1.1-xsd].
+
+ * **GSAK 1.2**, identified by `http://www.gsak.net/xmlv1/2` XML namespace, see
+   XSD [here][gsak-1.2-xsd].
+
+ * **GSAK 1.3**, identified by `http://www.gsak.net/xmlv1/3` XML namespace, see
+   XSD [here][gsak-1.3-xsd].
+
+ * **GSAK 1.4**, identified by `http://www.gsak.net/xmlv1/4` XML namespace, see
+   XSD [here][gsak-1.4-xsd].
+
+ * **GSAK 1.5**, identified by `http://www.gsak.net/xmlv1/5` XML namespace, see
+   XSD [here][gsak-1.5-xsd].
+
+ * **GSAK 1.6**, identified by `http://www.gsak.net/xmlv1/6` XML namespace, see
+   XSD [here][gsak-1.6-xsd].
+
+
+### Backward-compatibility issues
+
+Same issues as with Topografix and Groundspeak. Their changes seem to be
+backward-compatible (can someone confirm this?), but still, they choose to
+switch XML namespace on every release, which seems to be effectively ruining
+this backward-compatibility. Discuss [here][weird-namespaces].
+
+
+### Usage
+
+ * Opencaching sites have adopted the usage of the `<Parent>` element, as a
+   way to attach alternate waypoints to Geocaches. This information is included
+   in the **GSAK 1.5** format.
+
+ * Not sure if Geocaching.com uses it too?
+
+ * [c:geo](http://www.cgeo.org/) seems to support a much larger set of the
+   extra GSAK attributes than just the `<Parent>` element. See
+   [here](https://github.com/cgeo/cgeo/blob/da0d45046baeb45ee3d436f8f55a66dc9530b89a/main/src/cgeo/geocaching/files/GPXParser.java#L761)
+   (note that a commit hash is embedded in this permalink; this means that the
+   recent versions of c:geo may support even more GSAK extensions).
+
+   - Can someone explain what these extra elements do? Why does c:geo support
+     them? Perhaps it would be useful to make use of them in other geocaching
+     sites? Perhaps Geocaching.com does include these elements in their GPX
+     files?
+
+
+c:geo Extensions
+----------------
+
+### Versions
+
+Only one version so far:
+
+ * **c:geo 1.0**, identified by `http://www.cgeo.org/wptext/1/0` XML namespace,
+   see XSD [here][cgeo-1.0-xsd].
+
+
+### Backward-compatibility issues
+
+As far as we know, only one version has been released, so we don't know if
+c:geo will follow [the weird strategy][weird-namespaces] that others did.
+However, the `/1/0` suffix in the namespace identifier suggests they might...
+
+
+### Usage
+
+As far as we know, c:geo uses these attributes internally only. The XSD does
+not document the meaning of them, but the `<visited>` element looks quite
+promising. Might be useful to support this information in other contexts.
+
+
 Summary
 -------
 
@@ -148,6 +229,16 @@ When generating GPX files:
    Geocaching.com supports this option just for a handful of users. (Can
    someone confirm this?)
 
+ * It's hard to definitely say which GSAK namespace you should use, if you want
+   to attach information about additional waypoints. Opencaching sites use the
+   **GSAK 1.5** namespace. C:geo
+   [looks for](https://github.com/cgeo/cgeo/blob/da0d45046baeb45ee3d436f8f55a66dc9530b89a/main/src/cgeo/geocaching/files/GPXParser.java#L759)
+   GSAK elements in a
+   [hardcoded subset](https://github.com/cgeo/cgeo/blob/da0d45046baeb45ee3d436f8f55a66dc9530b89a/main/src/cgeo/geocaching/files/GPXParser.java#L86)
+   of GSAK namespaces (they need to extend this subset every time GSAK break
+   backward-compatibility by released a new XML namespace).
+
+
 When parsing GPX files:
 
  * **You only need to support *Topografix 1.0* + *Groundspeak 1.0.1*
@@ -156,12 +247,20 @@ When parsing GPX files:
 
  * You may sometimes encounter *Topografix 1.1* format, but this is probably
    due to some conversion by an external app. These files usually won't contain
-   any Groundspeak namespace.
+   any Groundspeak namespace (except, possibly, the TerraCaching ones, but this
+   is not confirmed).
 
- * You may sometimes encounter *Groundspeak 1.0* format (not the 1.0.1 one!).
-   This is due to the fact, that geocaching.com still allows their users to
-   export this format. Also, presumably, some old apps still export to this
-   format.
+ * You may sometimes encounter *Groundspeak 1.0* format. This is due to the
+   fact, that geocaching.com still allows their users to export this format.
+   Also, presumably, some old apps still accept (or export to) this format.
+
+ * GSAK namespaces seem to be generating the most work for everyone. They have
+   already released 6 XML namespaces! And it seems that **if you want to
+   support GSAK, then you need to parse all of those** (like c:geo does), and
+   also, you will be required to update your application once in a while,
+   because GSAK authors seem to be happy with changing their format in a
+   backward-incompatible way, on a regular basis (probably they believe it's
+   backward-compatible, but it isn't, not really).
 
 
 [topografix-1.0-xsd]: http://www.topografix.com/GPX/1/0/gpx.xsd
@@ -170,3 +269,11 @@ When parsing GPX files:
 [groundspeak-1.0.1-xsd]: http://static.groundspeak.com/cache/1/0/1/cache.xsd
 [groundspeak-1.1-xsd]: http://static.groundspeak.com/cache/1/1/cache.xsd
 [oc-gpx-extension]: https://github.com/opencaching/gpx-extension
+[weird-namespaces]: https://github.com/opencaching/gpx-extension/issues/4
+[gsak-1.1-xsd]: http://www.gsak.net/xmlv1/1/gsak.xsd
+[gsak-1.2-xsd]: http://www.gsak.net/xmlv1/2/gsak.xsd
+[gsak-1.3-xsd]: http://www.gsak.net/xmlv1/3/gsak.xsd
+[gsak-1.4-xsd]: http://www.gsak.net/xmlv1/4/gsak.xsd
+[gsak-1.5-xsd]: http://www.gsak.net/xmlv1/5/gsak.xsd
+[gsak-1.6-xsd]: http://www.gsak.net/xmlv1/6/gsak.xsd
+[cgeo-1.0-xsd]: https://raw.githubusercontent.com/cgeo/cgeo/master/main/project/xsd/cgeo.xsd
