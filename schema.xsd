@@ -38,11 +38,47 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="code" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>
+                            A "waypoint code" of the geocache. A geocache can have multiple
+                            waypoint codes if it is listed at different geocache databases,
+                            e.g. OP8EB7 = OC12C6F = GC6BX4Z. Note that the waypoint code
+                            which is given as gpx:name may also appear redundantly as
+                            oc:code.
+
+                            "oc:code" does not mean "an Opencaching code". Codes of any
+                            geocaching platform can be contained in this element.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="trip_time" type="decimal" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Approximate total amount of time needed to find the cache,
+                            in hours. This will usually include the time to reach the
+                            cache location and go back (from/to a parking spot, etc.)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="trip_distance" type="decimal" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Approximate total distance needed to find the cache, in
+                            kilometers. This will usually include the time to reach the
+                            cache location and go back (from/to a parking spot, etc.)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="requires_password" type="xs:boolean" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             If true, then a password is required in order to submit 'Found it'
                             or 'Attended' logs for this geocache.
+
+                            If this element is not present, this means "we don't know if a
+                            log password is required". To express "no password is required",
+                            you must include oc:requires_password with "false" value.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
