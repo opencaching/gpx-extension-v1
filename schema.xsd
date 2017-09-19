@@ -57,7 +57,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="trip_time" type="decimal" minOccurs="0" maxOccurs="1">
+                <xs:element name="trip_time" type="xs:decimal" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             Approximate total amount of time needed to find the cache,
@@ -66,7 +66,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="trip_distance" type="decimal" minOccurs="0" maxOccurs="1">
+                <xs:element name="trip_distance" type="xs:decimal" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             Approximate total distance needed to find the cache, in
