@@ -241,7 +241,7 @@ When generating GPX files:
 
 When parsing GPX files:
 
- * **You only need to support *Topografix 1.0* + *Groundspeak 1.0.1*
+ * **You need to support at least the *Topografix 1.0* + *Groundspeak 1.0.1*
    combination.** All sites, and all newer apps can export to this format, so
    your users shouldn't have problems with providing it.
 
@@ -250,14 +250,17 @@ When parsing GPX files:
    any Groundspeak namespace (except, possibly, the TerraCaching ones, but this
    is not confirmed).
 
- * You may sometimes encounter *Groundspeak 1.0* format. This is due to the
+ * You may still encounter *Groundspeak 1.0* format. This is due to the
    fact, that geocaching.com still allows their users to export this format.
-   Also, presumably, some old apps still accept (or export to) this format.
+   Some users have this format set in their geocaching.com preferences, and
+   these users will have their GPX files exported in this format. In other
+   words, it seems to be a good idea to be able to import it.
 
  * GSAK namespaces seem to be generating the most work for everyone. They have
    already released 6 XML namespaces! And it seems that **if you want to
-   support GSAK, then you need to parse all of those** (like c:geo does), and
-   also, you will be required to update your application once in a while,
+   support GSAK, then you need to parse all of those** (like
+   [c:geo does](https://github.com/cgeo/cgeo/blob/da0d45046baeb45ee3d436f8f55a66dc9530b89a/main/src/cgeo/geocaching/files/GPXParser.java#L759)),
+   and also, you will be required to update your application once in a while,
    because GSAK authors seem to be happy with changing their format in a
    backward-incompatible way, on a regular basis (probably they believe it's
    backward-compatible, but it isn't, not really).
