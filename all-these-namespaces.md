@@ -202,7 +202,9 @@ by it still lives (more of less), so it's worth mentioning here.
  * **OX 1.0**, identified by
    `http://www.opencaching.com/xmlschemas/opencaching/1/0` XML namespace, see
    an unofficial XSD copy
-   [here](https://github.com/opencaching/okapi/blob/master/etc/nsox.xsd).
+   [here](https://github.com/opencaching/okapi/blob/master/etc/nsox.xsd), or
+   you can browse the Internet Archive
+   [here](https://web.archive.org/web/*/http://www.opencaching.com/xmlschemas/opencaching/1/0/opencaching.xsd).
 
 
 ### Usage
