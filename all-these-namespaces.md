@@ -189,6 +189,48 @@ Discuss [here][weird-namespaces].
      files?
 
 
+OX Extensions
+-------------
+
+[Opencaching.com](https://en.wikipedia.org/wiki/Geocaching#Opencaching.com) was
+a site run by Garmin. The service is now closed, but the XML Schema introduced
+by it still lives (more of less), so it's worth mentioning here.
+
+
+### Versions
+
+ * **OX 1.0**, identified by
+   `http://www.opencaching.com/xmlschemas/opencaching/1/0` XML namespace, see
+   an unofficial XSD copy
+   [here](https://github.com/opencaching/okapi/blob/master/etc/nsox.xsd).
+
+
+### Usage
+
+ * Opencaching Network sites allow exporting GPX files with *OX 1.0*
+   extensions. These extensions are currently always added to GPX files
+   exported for Garmin devices. Developers using [OKAPI][okapi] can also ask
+   for these extensions to be included (in the [GPX formatter][okapi-gpx]
+   method).
+
+ * Geocaching.com doesn't add OX extensions to its GPX files (and never had,
+   obviously).
+
+ * **All Garmin devices launched after Opencaching.com launched, support OX
+   extensions** (you can see some screenshots
+   [here](https://github.com/opencaching/gpx-extension-v1/issues/5)). It is
+   however unclear if Garmin is willing to support OX extensions in the future
+   (since opencaching.com is now closed).
+
+ * While it's almost certain that there are some applications which support OX
+   extensions (because Opencaching.com was quite popular for a couple of
+   years), we're not aware of any to list here explicitly.
+
+ * While there's nothing wrong in trying to keep OX extensions alive, the fact
+   that opencaching.com site is dead seems to (understandably) discourage
+   developers from adopting it.
+
+
 c:geo Extensions
 ----------------
 
@@ -285,3 +327,5 @@ When parsing GPX files:
 [gsak-1.5-xsd]: http://www.gsak.net/xmlv1/5/gsak.xsd
 [gsak-1.6-xsd]: http://www.gsak.net/xmlv1/6/gsak.xsd
 [cgeo-1.0-xsd]: https://raw.githubusercontent.com/cgeo/cgeo/master/main/project/xsd/cgeo.xsd
+[okapi]: https://github.com/opencaching/okapi
+[okapi-gpx]: https://opencaching.pl/okapi/services/caches/formatters/gpx.html
