@@ -60,9 +60,7 @@
                             groundspeak:type "Unknown Cache", which usually will be
                             understood as "Mystery Cache" or "Quiz Cache".
 
-                            More OC types may be added. If you encounter an OC type that
-                            your application does not understand, you should treat it as
-                            "Other Cache".
+                            More OC types may be added.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
