@@ -38,17 +38,22 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="code" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="other_code" type="xs:string" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
-                            A "waypoint code" of the geocache. A geocache can have multiple
-                            waypoint codes if it is listed at different geocache databases,
-                            e.g. OP8EB7 = OC12C6F = GC6BX4Z. Note that the waypoint code
-                            which is given as gpx:name may also appear redundantly as
-                            oc:code.
+                            The "waypoint code" of a listing of this geocache at another
+                            geocaching site. E.g. the codes  OP8EB7 (Opencaching.PL),
+                            OC12C6F (Opencaching.DE) and GC6BX4Z (Geocaching.COM) represent
+                            different listings of the same geocache. If gpx:wpt contains
+                            the Opencaching.PL listing, then gpx:name is OP8EB7, while there
+                            can be oc:other_code elements for OC12C6F and GC6BX4Z.
 
-                            "oc:code" does not mean "an Opencaching code". Codes of any
-                            geocaching platform can be contained in this element.
+                            Please keep in mind that all the properties of a geocache can
+                            be different in different listings. E.g when this schema was
+                            drafted, OP8EB7 had difficulty 2, OC12C6F had difficulty 2.5 and
+                            GC6BX4Z had difficulty 1.5. The geocache properties given in
+                            a GPX file only refer to the gpx:name listings, not to the
+                            oc:other_code listings.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
