@@ -192,7 +192,7 @@ Discuss [here][weird-namespaces].
 OX Extensions
 -------------
 
-[Opencaching.com](https://en.wikipedia.org/wiki/Geocaching#Opencaching.com) was
+[OpenCaching.com](https://en.wikipedia.org/wiki/Geocaching#Opencaching.com) was
 a site run by Garmin. The service is now closed, but the XML Schema introduced
 by it still lives (more of less), so it's worth mentioning here.
 
@@ -207,27 +207,26 @@ by it still lives (more of less), so it's worth mentioning here.
 
 ### Usage
 
- * Opencaching Network sites allow exporting GPX files with *OX 1.0*
-   extensions. These extensions are currently always added to GPX files
-   exported for Garmin devices. Developers using [OKAPI][okapi] can also ask
+ * Opencaching Network sites doen't add OX extensions to their GPX files
+   (and never did). However, developers using [OKAPI][okapi] can ask
    for these extensions to be included (in the [GPX formatter][okapi-gpx]
    method).
 
- * Geocaching.com doesn't add OX extensions to its GPX files (and never had,
+ * Geocaching.com doesn't add OX extensions to its GPX files (and never did,
    obviously).
 
- * **All Garmin devices launched after Opencaching.com launched, support OX
+ * **All Garmin devices launched after OpenCaching.com launched, support OX
    extensions** (you can see some screenshots
    [here](https://github.com/opencaching/gpx-extension-v1/issues/5)). It is
    however unclear if Garmin is willing to support OX extensions in the future
-   (since opencaching.com is now closed).
+   (since OpenCaching.com is now closed).
 
  * While it's almost certain that there are some applications which support OX
-   extensions (because Opencaching.com was quite popular for a couple of
+   extensions (because OpenCaching.com was quite popular for a couple of
    years), we're not aware of any to list here explicitly.
 
  * While there's nothing wrong in trying to keep OX extensions alive, the fact
-   that opencaching.com site is dead seems to (understandably) discourage
+   that OpenCaching.com site is dead seems to (understandably) discourage
    developers from adopting it.
 
 
