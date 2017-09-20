@@ -52,6 +52,27 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
+                <xs:element name="size" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The size of the geocache, one of the following
+
+                            oc:size         usual groundspeak:size mapping
+
+                            Nano            Micro or Other
+                            Micro           Micro
+                            Small           Small
+                            Regular         Regular
+                            Large           Large
+                            Very large      Large
+                            Other           Other
+                            No container    Virtual
+
+                            While it is unlikely that more sizes will be added, you
+                            still should be prepared to handle them.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="trip_time" type="xs:decimal" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
