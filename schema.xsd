@@ -52,6 +52,32 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
+                <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The type of geocache in terms of common Opencaching types;
+                            one of the following:
+
+                            * Traditional Cache
+                            * Multi-cache
+                            * Quiz Cache
+                            * Moving Cache
+                            * Virtual Cache
+                            * Webcam Cache
+                            * Podcast Cache
+                            * Event Cache
+                            * Own Cache
+                            * Other Cache
+
+                            The types "Quiz", "Moving", "Podcast", "Own" and "Other" are
+                            not defined for groundspeak:type and will usually be mapped to
+                            groundspeak:type "Unknown Cache", which usually will be
+                            understood as "Mystery Cache" or "Quiz Cache".
+
+                            More OC types may be added.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="size" type="xs:string" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
