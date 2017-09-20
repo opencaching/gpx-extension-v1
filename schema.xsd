@@ -57,7 +57,7 @@
                         <xs:documentation>
                             The size of the geocache, one of the following
 
-                            oc:size         usual groundspeak:size mapping
+                            oc:size         usual groundspeak:container mapping
 
                             Nano            Micro or Other
                             Micro           Micro
