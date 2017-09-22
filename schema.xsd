@@ -141,5 +141,14 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
+    <xs:element name="site_team_entry" type="xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                This element is supposed to be added as a child of the groundspeak:log element.
+                If true, it expresses that the log entry has been "officially" made by a
+                member of the Opencaching site's team.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
 
 </xs:schema>
