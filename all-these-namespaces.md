@@ -60,7 +60,10 @@ use of it, and it was a hit.
  * [GSAK](http://gsak.net) allows to export GPX files in both 1.0 and 1.1
    formats.
  * [TerraCaching](http://terracaching.com/) is using Topografix 1.1 format
-   ([source](https://github.com/opencaching/gpx-extension/issues/2)).
+   ([source](https://github.com/opencaching/gpx-extension/issues/2)), but it
+   also doesn't use any of the other standards described here. They don't seem
+   to care about compatibility with any other sites and apps, so you (probably)
+   don't want to follow them.
 
 
 Groundspeak extensions
@@ -258,6 +261,24 @@ not document the meaning of them, but the `<visited>` element looks quite
 promising. Might be useful to support this information in other contexts.
 
 
+TerraCaching Extensions
+-----------------------
+
+We were unable to find the actual XSD for this one, but you can see an example
+of the GPX file [here](https://github.com/cgeo/cgeo/blob/6b8c22e7af0c285755d01e1dda5a4d278a9d4d22/tests/res/raw/tc99un_gpx.gpx).
+It uses the `http://www.TerraCaching.com/GPX/1/0` XML namespace.
+
+TerraCaching adds a custom `<terracache>` element under the `<extensions>`
+element in *TopoGrafix 1.1* GPX format. They don't reuse the Groundspeak
+namespace - they completely replace all its features with their own custom
+elements. 
+
+Since TerraCaching doesn't use *any* of the standards used by other sites, it
+seems there's not much compatibility to talk about. We don't know of any apps
+which recognize TerraCaching Extensions. As far as we know, they are used only
+by TerraCaching itself. You probably shouldn't use them too.
+
+
 Conclusion
 ----------
 
@@ -289,10 +310,9 @@ When parsing GPX files:
    combination.** All sites, and all newer apps can export to this format, so
    your users shouldn't have problems with providing it.
 
- * You may sometimes encounter *Topografix 1.1* format, but this is probably
-   due to some conversion by an external app. These files usually won't contain
-   any Groundspeak namespace (except, possibly, the TerraCaching ones, but this
-   is not confirmed).
+ * You may sometimes encounter *Topografix 1.1* format, but - most often - this
+   is probably due to some conversion by an external app. These files usually
+   won't contain any Groundspeak namespace.
 
  * You may still encounter *Groundspeak 1.0* format. This is due to the
    fact, that geocaching.com still allows their users to export this format.
