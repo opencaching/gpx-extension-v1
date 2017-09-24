@@ -207,10 +207,11 @@ by it still lives (more of less), so it's worth mentioning here.
 
 ### Usage
 
- * Opencaching Network sites doen't add OX extensions to their GPX files
-   (and never did). However, developers using [OKAPI][okapi] can ask
-   for these extensions to be included (in the [GPX formatter][okapi-gpx]
-   method).
+ * Some Opencaching Network sites add OX extensions to some of their GPX files
+   (the ones based OCPL), in particular when generating files for Garmin
+   devices (they are added by default in this case). Developers using
+   [OKAPI][okapi] can also ask for these extensions to be included (in the
+   [GPX formatter][okapi-gpx] method).
 
  * Geocaching.com doesn't add OX extensions to its GPX files (and never did,
    obviously).
