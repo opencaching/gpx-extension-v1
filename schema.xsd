@@ -55,7 +55,9 @@
                             groundspeak:type "Unknown Cache", which usually will be
                             understood as "Mystery Cache" or "Quiz Cache".
 
-                            More types may be added.
+                            More OC types may be added. You should be prepared to handle
+                            them, so that your app does not break if it encounters an
+                            unknown cache type.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -76,7 +78,9 @@
                             Other           Other
                             No container    Virtual
 
-                            More sizes may be added.
+                            More sizes may be added. You should be prepared to handle
+                            them, so that your app does not break if it encounters an
+                            unknown cache size.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
