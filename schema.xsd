@@ -130,6 +130,25 @@
                             GC6BX4Z had difficulty 1.5. The geocache properties given in
                             a GPX file only refer to the gpx:name listings, not to the
                             oc:other_code listings.
+
+                            Any uppercase string may appear as waypoint code.
+                            Some well-known code prefixes are:
+
+                              CX: geocaching.com challenge (discontinued)
+                              EC: extremcaching.com
+                              GC: geocaching.com
+                              NC: navicache.com
+                              OB: opencachig.be .nl .lu
+                              OC: opencaching.de .it .es .fr
+                              OK: opencache.uk
+                              OP: opencaching.pl
+                              OR: opecaching.ro
+                              OS: opencaching.se .no (discontinued)
+                              OU: opencaching.us
+                              OX: opencaching.com (discontinued)
+                              OZ: opencaching.cz
+                              TC: terracaching.com
+                              TP: geocaching.com.au
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
