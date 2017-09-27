@@ -5,8 +5,8 @@
     xmlns:groundspeak="http://www.groundspeak.com/cache/1/0/1"
     elementFormDefault="qualified"
 
-    targetNamespace="https://github.com/opencaching/gpx-extension/tree/stable-v1"
-    xmlns="https://github.com/opencaching/gpx-extension/tree/stable-v1"
+    targetNamespace="https://github.com/opencaching/gpx-extension-v1"
+    xmlns="https://github.com/opencaching/gpx-extension-v1"
 >
     <xs:annotation>
         <xs:documentation>
