@@ -95,8 +95,10 @@ about geocaches inside the *Topografix 1.0* GPX file.
    - `lastUpdated` and `exported` dates were added to the `<cache>` element.
    - Changed types of lots of elements from *xs:string* to either *xs:long*,
      *xs:decimal*, *xs:double* or *xs:date*.
-   - Introduced a new enumeration type *logType* for the type log elements
-     (instead of type *xs:string*).
+   - Introduced a new enumeration type *logType*. Probably this was intended to
+     replace the type *xs:string* of the log entries' `<type>` element - but
+     it is not referenced anywhere in the XSD. Also, several Groundspeak log
+     types are missing in the enumeration.
    - Bugfix: changed *maxOccurs* of the `<attributes>`, `<logs>` and
      `<travelbugs>` elements from `unbounded` to `1`.
 
