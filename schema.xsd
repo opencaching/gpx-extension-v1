@@ -49,17 +49,17 @@
                             * Podcast Cache
                             * Event Cache
                             * Own Cache
-                            * Unknown Cache
+                            * Other Cache
 
-                            "Own Cache" means that the cache owner carries the logbook,
-                            i.e. it is a special form of moving cache.
-                            "Unknown Cache" means that that the cache has some special type
-                            which cannot be represented by any of the other types.
-
-                            The types "Quiz", "Moving", "Podcast" and "Own" are not
-                            defined for groundspeak:type and will usually be mapped to
+                            The types "Quiz", "Moving", "Podcast", "Own" and "Other" are
+                            not defined for groundspeak:type and will usually be mapped to
                             groundspeak:type "Unknown Cache", which usually will be
                             understood as "Mystery Cache" or "Quiz Cache".
+
+                            Note that the type "Other Cache" is called "Unknown Cache"
+                            or "Unknown type" on the OC websites. We adopted the
+                            OKAPI naming "Other" here, which clearer expresses its
+                            meaning and distinguishes it from Groundspeak "Unknown Cache".
 
                             More OC types may be added. You should be prepared to handle
                             them, so that your app does not break if it encounters an
