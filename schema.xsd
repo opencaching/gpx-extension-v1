@@ -49,10 +49,15 @@
                             * Podcast Cache
                             * Event Cache
                             * Own Cache
-                            * Other Cache
+                            * Unknown Cache
 
-                            The types "Quiz", "Moving", "Podcast", "Own" and "Other" are
-                            not defined for groundspeak:type and will usually be mapped to
+                            "Own Cache" means that the cache owner carries the logbook,
+                            i.e. it is a special form of moving cache.
+                            "Unknown Cache" means that that the cache has some special type
+                            which cannot be represented by any of the other types.
+
+                            The types "Quiz", "Moving", "Podcast" and "Own" are not
+                            defined for groundspeak:type and will usually be mapped to
                             groundspeak:type "Unknown Cache", which usually will be
                             understood as "Mystery Cache" or "Quiz Cache".
 
