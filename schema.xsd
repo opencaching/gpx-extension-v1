@@ -21,7 +21,7 @@
                elements in this namespace using the "groundspeak:" prefix.
 
             Note, that "Opencaching Network" refers to the sites such as Opencaching.PL and
-            Opencaching.DE, NOT the (discontinued) Garmin's Opencaching.COM site.
+            Opencaching.DE, NOT the (discontinued) Garmin's OpenCaching.COM site.
         </xs:documentation>
     </xs:annotation>
 
@@ -33,10 +33,158 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <!-- No elements in the stable master branch yet. But some will be merged soon
-                from feature-branches. -->
+
+                <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The type of geocache in terms of common Opencaching types.
+                            So far, the following types have been defined:
+
+                            * Traditional Cache
+                            * Multi-cache
+                            * Quiz Cache
+                            * Moving Cache
+                            * Virtual Cache
+                            * Webcam Cache
+                            * Podcast Cache
+                            * Event Cache
+                            * Own Cache
+                            * Other Cache
+
+                            The types "Quiz", "Moving", "Podcast", "Own" and "Other" are
+                            not defined for groundspeak:type and will usually be mapped to
+                            groundspeak:type "Unknown Cache", which usually will be
+                            understood as "Mystery Cache" or "Quiz Cache".
+
+                            Note that the type "Other Cache" is called "Unknown Cache"
+                            or "Unknown type" on the OC websites. We adopted the
+                            OKAPI naming "Other" here, which clearer expresses its
+                            meaning and distinguishes it from Groundspeak "Unknown Cache".
+
+                            More OC types may be added. You should be prepared to handle
+                            them, so that your app does not break if it encounters an
+                            unknown cache type.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="size" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The size of the geocache. So far, the following sizes
+                            have been definied:
+
+                            oc:size         usual groundspeak:container mapping
+
+                            Nano            Micro (recommended) or Other
+                            Micro           Micro
+                            Small           Small
+                            Regular         Regular
+                            Large           Large
+                            Very large      Large
+                            Other           Other
+                            No container    Virtual
+
+                            More sizes may be added. You should be prepared to handle
+                            them, so that your app does not break if it encounters an
+                            unknown cache size.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="trip_time" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Approximate total amount of time needed to find the cache,
+                            in hours. This will usually include the time to reach the
+                            cache location and go back (from/to a parking spot, etc.)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="trip_distance" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Approximate total distance needed to find the cache, in
+                            kilometers. This will usually include the time to reach the
+                            cache location and go back (from/to a parking spot, etc.)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="requires_password" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            If true, then a password is required in order to submit 'Found it'
+                            or 'Attended' logs for this geocache.
+
+                            If this element is not present, this means "we don't know if a
+                            log password is required". To express "no password is required",
+                            you must include oc:requires_password with "false" value.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="other_code" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The "waypoint code" of a listing of this geocache at another
+                            geocaching site. E.g. the codes  OP8EB7 (Opencaching.PL),
+                            OC12C6F (Opencaching.DE) and GC6BX4Z (Geocaching.COM) represent
+                            different listings of the same geocache. If gpx:wpt contains
+                            the Opencaching.PL listing, then gpx:name is OP8EB7, while there
+                            can be oc:other_code elements for OC12C6F and GC6BX4Z.
+
+                            Please keep in mind that all the properties of a geocache can
+                            be different in different listings. E.g when this schema was
+                            drafted, OP8EB7 had difficulty 2, OC12C6F had difficulty 2.5 and
+                            GC6BX4Z had difficulty 1.5. The geocache properties given in
+                            a GPX file only refer to the gpx:name listings, not to the
+                            oc:other_code listings.
+
+                            Any uppercase string may appear as waypoint code.
+                            Some well-known code prefixes are:
+
+                              CX: geocaching.com challenge (discontinued)
+                              EC: extremcaching.com
+                              GC: geocaching.com
+                              NC: navicache.com
+                              OB: opencachig.be .nl .lu
+                              OC: opencaching.de .it .es .fr
+                              OK: opencache.uk
+                              OP: opencaching.pl
+                              OR: opencaching.ro
+                              OS: opencaching.se .no (discontinued)
+                              OU: opencaching.us
+                              OX: opencaching.com (discontinued)
+                              OZ: opencaching.cz
+                              TC: terracaching.com
+                              TP: geocaching.com.au
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
             </xs:sequence>
         </xs:complexType>
+    </xs:element>
+
+    <xs:element name="log_uuid" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                This element is supposed to be added as a child of the groundspeak:log element.
+                It contains the UUID of the log entry.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="site_team_entry" type="xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                This element is supposed to be added as a child of the groundspeak:log element.
+                If true, it expresses that the log entry has been "officially" made by a
+                member of the Opencaching site's team.
+            </xs:documentation>
+        </xs:annotation>
     </xs:element>
 
 </xs:schema>
