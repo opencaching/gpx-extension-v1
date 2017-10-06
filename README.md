@@ -5,13 +5,9 @@ Introduction
 ------------
 
 This repository contains the XML Schema of the newly proposed Opencaching GPX
-Extension. This extension will reside in the
+Extension. This extension resides in the
 `https://github.com/opencaching/gpx-extension-v1` XML namespace (as discussed
 [here](https://github.com/opencaching/gpx-extension-v1/issues/6)).
-
-This is a fairly new project, so the schema is currently empty. We are
-discussing introducing new elements in separate feature branches (which will
-eventually be merged to the stable schema in the `master` branch).
 
 
 Versioning Strategy
