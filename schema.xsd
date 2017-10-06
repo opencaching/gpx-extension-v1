@@ -22,6 +22,17 @@
 
             Note, that "Opencaching Network" refers to the sites such as Opencaching.PL and
             Opencaching.DE, NOT the (discontinued) Garmin's OpenCaching.COM site.
+
+            Some Opencaching-specific information is missing in this schema. It may be
+            added later in a backward-compatible manner. E.g.
+
+            - Opencaching geocache attributes
+            - Opencaching log entry types
+            - Opencaching waypoint types
+            - Opencaching cache maintenance state flags
+
+            You may join the discussion on these issues at
+            https://github.com/opencaching/gpx-extension-v1 .
         </xs:documentation>
     </xs:annotation>
 
@@ -120,7 +131,7 @@
 
                             If this element is not present, this means "we don't know if a
                             log password is required". To express "no password is required",
-                            you must include oc:requires_password with "false" value.
+                            you must include oc:requires_password with "false" (or 0) value.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -164,27 +175,87 @@
                     </xs:annotation>
                 </xs:element>
 
+                <xs:element name="logs" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            This element contains Opencaching-specific information about
+                            log entries of the geocache.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="log" type="logType" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="log_uuid" type="xs:string">
+    <xs:complexType name="logType">
         <xs:annotation>
             <xs:documentation>
-                This element is supposed to be added as a child of the groundspeak:log element.
-                It contains the UUID of the log entry.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
+                This type contains Opencaching-specific information of one log entry.
+                If a groundspeak:log element is present with the same ID attribute,
+                you can merge oc:log and the groundspeak:log to get the whole log
+                entry information.
 
-    <xs:element name="site_team_entry" type="xs:boolean">
-        <xs:annotation>
-            <xs:documentation>
-                This element is supposed to be added as a child of the groundspeak:log element.
-                If true, it expresses that the log entry has been "officially" made by a
-                member of the Opencaching site's team.
+                It is NOT guaranteed that there is a matching groundspeak:log element!
+                The GPX file may contain only the OC-specific information.
             </xs:documentation>
         </xs:annotation>
-    </xs:element>
+
+        <xs:sequence>
+            <xs:element name="site_team_entry" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        If this element is true (or 1), then the log entry has been
+                        "officially" made by a member of the Opencaching site's team.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+
+        <xs:attribute name="id" form="unqualified" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The site-dependent ID of the log entry. If there is a groundspeak:log
+                    element with the same ID, then it contains information of the same
+                    log entry.
+
+                    IMPORTANT NOTE: This ID is unique only for GPX files from the same
+                    source. Different log entries retrieved from different geocaching
+                    websites can have the same ID. Also, when Opencaching websites will
+                    eventually be interconnected, the same log entry will have different
+                    IDs when retrieved from different Opencaching sites. So if you need
+                    a unique and safe identifier for log entries, use the UUID instead.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+
+        <xs:attribute name="uuid" form="unqualified" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    This element contains the UUID of the log entry. You can use it
+                    to retrieve additional information about the log entry through
+                    the Opencaching API (OKAPI), or just as a globally unique
+                    identifier of the log entry.
+
+                    Note: Though this attribute is optional by definition, all OC
+                    websites which support the OC GPX extension supply it for each
+                    log entry. So when retrieving data from an OC site, you can rely
+                    on the UUID. Also, if you process the oc:logs element, you MUST
+                    NOT discard UUIDs, but retain them in any GPX output.
+
+                    The only case when the UUID may be omitted is if you create a
+                    GPX file from some source with does not supply an OC UUID, but
+                    need to include other oc:log properties like the site team entry
+                    flag.
+                </xs:documentation>
+             </xs:annotation>
+        </xs:attribute>
+
+    </xs:complexType>
 
 </xs:schema>
