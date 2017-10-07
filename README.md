@@ -4,8 +4,9 @@ Opencaching GPX Extension
 Introduction
 ------------
 
-This repository contains the XML Schema of the Opencaching GPX Extension.
-This extension resides in the `https://github.com/opencaching/gpx-extension-v1`
+This repository contains the [XML Schema](https://github.com/opencaching/gpx-extension-v1/blob/master/schema.xsd)
+of the Opencaching GPX Extension. This extension allows to add Opencaching-specific
+information to GPX files. It resides in the `https://github.com/opencaching/gpx-extension-v1`
 XML namespace (as discussed [here](https://github.com/opencaching/gpx-extension-v1/issues/6)).
 
 
