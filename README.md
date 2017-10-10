@@ -35,6 +35,15 @@ Versioning Strategy
   [here](https://github.com/opencaching/gpx-extension-v1/blob/master/all-these-namespaces.md).
 
 
+Implementations
+---------------
+
+The Opencaching GPX Extension is implemented in [OKAPI](https://opencaching.pl/okapi)
+and in native [Opencaching.de](https://www.opencaching.de) GPX download. An
+Implementation for other Opencaching sites is
+[on the way](https://github.com/opencaching/opencaching-pl/pull/1240).
+
+
 Other popular GPX Extensions
 ----------------------------
 
