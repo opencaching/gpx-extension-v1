@@ -38,10 +38,10 @@ Versioning Strategy
 Implementations
 ---------------
 
-The Opencaching GPX Extension is implemented in [OKAPI](https://opencaching.pl/okapi)
-and in native [Opencaching.de](https://www.opencaching.de) GPX download. An
-Implementation for other Opencaching sites is
-[on the way](https://github.com/opencaching/opencaching-pl/pull/1240).
+The Opencaching GPX Extension is implemented at all up-to-date Opencaching
+sites: Opencaching.DE, Opencaching.PL, Opencaching.NL, Opencache.UK and
+Opencaching.RO. At all these sites it is avaiable in native GPX download as
+well as though the [OKAPI](https://opencaching.pl/okapi) interface.
 
 
 Other popular GPX Extensions
